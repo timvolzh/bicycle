@@ -25,5 +25,10 @@ jobs:
       - name: Check syntax
         run: python -m py_compile $(git ls-files '*.py')
 
+      - name: Run tests
+        run: |
+          pip install pytest
+          pytest backend/tests telegram_bot/tests
+
       - name: Build docker images
         run: docker compose build
